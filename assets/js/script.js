@@ -26,3 +26,21 @@ var j = arrTodo.length;
 
 
 })
+
+
+$(document).on( 'click', '.fa-trash-alt', function(){    
+	$(this).parent().remove();                                //  .parent cerca la classe padre dell'elemento selezionato
+} )
+
+$('#input-text').keyup(function(event){
+  console.log(event.which)
+	if( event.which === 13 ){
+    var inputText = $('#input-text').val()
+    //console.log(inputText)
+    var item2 = $( '.template li').clone();          // HO COPIATO IL MIO TEMPLATE NEL JS DENTRO LA VARIABILE ITEM.
+    //console.log(item2)
+    $(item2).find( ' .text ' ).append(inputText);   //  cerco nel mio template la classe text e ci copio il valore della stringa
+    $('.lista ul').append(item2); 
+    $('#input-text').val(" ");                      // Dopo aver inserito il mio input lo azzero cambiando il valore con uno spazio
+  }
+});
